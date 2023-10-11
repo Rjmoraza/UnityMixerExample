@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-3306144555201354449
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 9d84045c6da2eef4483976ddb3787a8d
+  m_EffectName: SFX Reverb
+  m_MixLevel: 92829c09b2a41f843b8e56d76257c8ea
+  m_Parameters:
+  - m_ParameterName: Dry Level
+    m_GUID: 226ef47bfb7997f44bcaf865a2138e98
+  - m_ParameterName: Room
+    m_GUID: 5ce256c014a89404298157b75b9476f5
+  - m_ParameterName: Room HF
+    m_GUID: 25aeb6751b100bf47ba05012256b0da7
+  - m_ParameterName: Decay Time
+    m_GUID: b3cfe83ef96fd864c9b46e25b5cc8c96
+  - m_ParameterName: Decay HF Ratio
+    m_GUID: 53e5aaa01ede7414d8eb86e902396fbd
+  - m_ParameterName: Reflections
+    m_GUID: b8ebb31e6bff79f46a4bf6ddcccf0306
+  - m_ParameterName: Reflect Delay
+    m_GUID: efdc082efbc5db141a36214a4ea36dde
+  - m_ParameterName: Reverb
+    m_GUID: ecc36ebebef68a14da6aa91591b1a8fd
+  - m_ParameterName: Reverb Delay
+    m_GUID: a04d974a7a5a3ed44997a3a58444ea8e
+  - m_ParameterName: Diffusion
+    m_GUID: 6da17dcf821aa444cace309627b59ae5
+  - m_ParameterName: Density
+    m_GUID: 0e8928e85db475241913d227ae5ecd7a
+  - m_ParameterName: HF Reference
+    m_GUID: 1265cf41aa8d766468e847007c3e4e86
+  - m_ParameterName: Room LF
+    m_GUID: 695f3f5334a5a2d45840d3f824205c39
+  - m_ParameterName: LF Reference
+    m_GUID: 99926e59bb8d84a4296144de8bd7f0e9
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!241 &24100000
+AudioMixerController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SFX
+  m_OutputGroup: {fileID: 7444959336726800682, guid: e7619d08d0c9efc4c8d30a49b503b5f3, type: 2}
+  m_MasterGroup: {fileID: 24300002}
+  m_Snapshots:
+  - {fileID: 24500006}
+  - {fileID: 5151651516864895540}
+  m_StartSnapshot: {fileID: 24500006}
+  m_SuspendThreshold: -80
+  m_EnableSuspend: 1
+  m_UpdateMode: 0
+  m_ExposedParameters: []
+  m_AudioMixerGroupViews:
+  - guids:
+    - a7bd207c4ad7c5d4096b38479e208a0a
+    name: View
+  m_CurrentViewIndex: 0
+  m_TargetSnapshot: {fileID: 24500006}
+--- !u!243 &24300002
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Master
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: a7bd207c4ad7c5d4096b38479e208a0a
+  m_Children: []
+  m_Volume: 7235f9ee58433204a8affe41b764658b
+  m_Pitch: fe295d424e7318b489cf1d8cb2733d86
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 24400004}
+  - {fileID: -3306144555201354449}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &24400004
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 6c463307583790442b00176e59a9bfd1
+  m_EffectName: Attenuation
+  m_MixLevel: 99384a4e2f824cf4b884af32c85950b3
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!245 &24500006
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BASE
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: d6afd4a90dba1df449770b876ae44284
+  m_FloatValues:
+    83123d0166534324892ebfc2c1eb3610: 1
+    4f08dd7193bc43a48b5f1e946814d0f6: 1
+    d47828e6a3a523e498bcf78a1c51a2d6: -0
+    88230e3add10413489b80d1e32ae62ff: -10000
+    b49fe7bcb3df0a840a3673960e90fce1: 0.0655
+    06aeda5ed5ecaab46a08ca13e905477e: -4657
+  m_TransitionOverrides: {}
+--- !u!245 &5151651516864895540
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: REVERB
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: c2fe976e5858fcc4f92bf878ec224f10
+  m_FloatValues:
+    5ce256c014a89404298157b75b9476f5: 0
+  m_TransitionOverrides: {}
