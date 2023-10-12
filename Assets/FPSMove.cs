@@ -6,22 +6,35 @@ using UnityEngine.Audio;
 public class FPSMove : MonoBehaviour
 {
     Rigidbody rb;
-    AudioSource source;
     public GameObject pauseMenu;
     bool pause = false;
 
-    public AudioMixer mixer;
+    AudioSource source;
+
+    float sourceVolume;
+
+    public AudioMixer musicMixer;
+    public AudioMixer sfxMixer;
+
     AudioMixerSnapshot mainSnapshot;
     AudioMixerSnapshot pauseSnapshot;
+
+    AudioMixerSnapshot sfxMainSnapshot;
+    AudioMixerSnapshot sfxReverbSnapshot;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         source = GetComponent<AudioSource>();
+        sourceVolume = source.volume;
 
-        mainSnapshot = mixer.FindSnapshot("MAIN");
-        pauseSnapshot = mixer.FindSnapshot("PAUSE");
+        mainSnapshot = musicMixer.FindSnapshot("MAIN");
+        pauseSnapshot = musicMixer.FindSnapshot("PAUSE");
+
+        sfxMainSnapshot = sfxMixer.FindSnapshot("MAIN-SFX");
+        sfxReverbSnapshot = sfxMixer.FindSnapshot("REVERB-SFX");
     }
 
     // Update is called once per frame
@@ -34,7 +47,7 @@ public class FPSMove : MonoBehaviour
             if(Input.GetButtonUp("Cancel"))
             {
                 pause = false;
-                mainSnapshot.TransitionTo(0.1f);
+                mainSnapshot.TransitionTo(0.5f);
             }
         }
         else
@@ -47,7 +60,7 @@ public class FPSMove : MonoBehaviour
             if (x == 0 && z == 0)
             {
                 rb.velocity = Vector3.zero;
-                source.Stop();
+                source.volume = 0;
             }
             else
             {
@@ -55,16 +68,30 @@ public class FPSMove : MonoBehaviour
                 Vector3 right = new Vector3(transform.right.x, 0, transform.right.z).normalized;
                 Vector3 newVelocity = forward * z + right * x;
                 rb.velocity = newVelocity;
-
-                if (!source.isPlaying)
-                    source.Play();
+                source.volume = sourceVolume;
             }
 
             if (Input.GetButtonUp("Cancel"))
             {
                 pause = true;
-                pauseSnapshot.TransitionTo(0.1f);
+                pauseSnapshot.TransitionTo(0.5f);
             }
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "ReverbZone")
+        {
+            sfxReverbSnapshot.TransitionTo(0.1f);
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "ReverbZone")
+        {
+            sfxMainSnapshot.TransitionTo(0.1f);
         }
     }
 }
